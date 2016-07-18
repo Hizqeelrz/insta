@@ -12,10 +12,13 @@
 					.col-md-6
 						%p.user
 							by
-							= @pic.user.name
+							= @pic.user.email
 
 					.col-md-6
 						.btn-group.pull-right
+							= link_to like_pic_path(@pic), method: :put, class: "btn btn-default btn-sm" do
+								%span.glyphicon.glyphicon-thumbs-up
+								= @pic.get_upvotes.size
 
 							- if user_signed_in?
 								= link_to "Fix Pic", edit_pic_path, class: "btn btn-info btn-sm"
